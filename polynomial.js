@@ -58,9 +58,19 @@ exports.evaluate = (poly, x) => {
 }
 
 if (!module.parent) {
-  let match = grammar.match(process.argv[2]);
+  let match = grammar.match(process.argv[3]);
   if (match.succeeded()) {
-    console.log(semantics(match).deriv());
+    switch (process.argv[2]) {
+      case 'deriv':
+        console.log(semantics(match).deriv());
+        break;
+      case 'eval':
+        console.log(semantics(match).eval());
+        break;
+      default:
+        console.log(`Please either specify either 'deriv' or 'eval' in the #2 commandline position.`);
+
+    }
   } else {
     console.error(match.message);
     process.exitCode = 1;
