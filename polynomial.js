@@ -63,13 +63,15 @@ if (!module.parent) {
   const match = grammar.match(process.argv[3]);
   if (match.succeeded() && (process.argv.length === 4 || process.argv.length === 5)) {
     switch (process.argv[2]) {
-      case 'deriv':
+      case 'deriv': {
         console.log(semantics(match).deriv()); // eslint-disable-line no-console
         break;
-      case 'eval':
-        console.log(semantics(match).eval( // eslint-disable-line no-console
-          parseInt(process.argv[4], 10)));
+      }
+      case 'eval': {
+        const outFunction = semantics(match).eval();
+        console.log(outFunction(parseInt(process.argv[4], 10))); // eslint-disable-line no-console
         break;
+      }
       default:
         console.log(`Please either specify either 'deriv' or 'eval' in the #2 commandline position.`); // eslint-disable-line no-console, quotes
 
