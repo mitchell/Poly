@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { derivative, evaluate } = require('../polynomial')
+const {derivative, evaluate} = require('../polynomial')
 
 describe('The differentiator', () => {
   it('detects malformed polynomials', done => {
